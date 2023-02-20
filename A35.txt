@@ -1,0 +1,189 @@
+résumé html css||nope|nope|0||petit résumé pour le débutant en html||voici un petit rammassis de note concernant le html et le css. c'est tres incomplet mais il contient toute les conaissance qui m'ont permis de créer le design pourris de ce site
+
+si vous vouyez une connerie n'hesitez pas a me le signaler
+
+tout ce qui est [entre crochet] est a remplacer lors de l'uttilisation des exemples
+
+
+
+<hr/><span class=stitre><br/>le document de base html5:</span>
+&#60!DOCTYPE html>
+&#60html>&#60head>
+ici les information sur le document (méta données)
+&#60/head>&#60body>
+ici le contenu de votre page
+&#60/body>&#60/html>
+
+
+<hr/><span class=stitre><br/>les méta données</span>
+&#60title>[titre de la page]&#60/title>
+&#60meta http-equiv="Content-Type" content="text/html; charset=[type de codage de la page]" />
+&#60meta charset="[type de codage de la page]"> (exemple de type de codage: UTF-8, ISO-8859-1, windows-1252, etc...)
+&#60meta name="keywords" content="[liste des mots clefs séparé par une virgule]" />
+&#60meta name="description" content="[description de la page]" />
+&#60link rel="shortcut icon" type="image/x-icon" href="[adresse d'une icone pour la page]" />
+&#60meta name="author" content="[auteur de la page]">
+&#60meta http-equiv="refresh" content="[temp en seconde]">(recharge la page au bout d'un certains temp)
+&#60meta http-equiv="refresh" content="[temp en seconde], url=[adresse de l'autre page]">(charge une autre page au bout d'un certains temp)
+
+
+
+&#60style>[feuille de style intégré a la page]&#60/style>
+&#60link rel="stylesheet" type="text/css" href="[adresse d'une feuille de style hors de la page]" />
+
+&#60script type="text/javascript">[javascript intégré a la page]&#60/script>
+&#60script type="text/javascript" src="[adresse d'un programme javascript hors de la page]">&#60/script>
+
+<hr/><span class=stitre><br/>les liens</span>
+&#60a href="[adresse du lien]">[texte du lien]&#60/a> 
+
+rajouter [target="_blank"] comme option fait ouvrir une nouvel onglet ou fenêtre pour charger la destination du lien
+rajouter [target="XXX"] comme option fait ouvrir le lien dans l'IFRAME (voir plus bas) qui auras l'option [name="XXX"] (changez XXX a votre convenance)
+
+&#60a id="xxx">&#60/a> crée une marque dans la page qui sera accesible par le lien &#60a href="#xxx">[texte du lien]&#60/a> si celui ci est sur la même page ou par le lien&#60a href="[adresse de cette page]#xxx">[texte du lien]&#60/a> si le lien est sur une autre page 
+
+<hr/><span class=stitre><br/>les images</span>
+&#60img src="[adresse de l'image]" alt="[texte affiché si l'image ne peut pas etre affiché]" width="[largeur en pixel]" height="[hauteur en pixel]">
+
+rajouter [usemap="#XXX"] permet de définir des zones cliquable sur l'image
+
+&#60map name="XXX">[liste des zones cliquable]&#60/map> carte de zone cliquable
+&#60area shape="rect" coords="X1,Y1,X2,Y2" href="[adresse du lien]"> zone cliquable de type rectangle
+&#60area shape="circle" coords="X,Y,R" href="[adresse du lien]"> zone cliquable de type cercle
+&#60area shape="poly" coords="X1,Y1,X2,Y2,X3,Y3" href="[adresse du lien]"> zone cliquable de type polygone (ici un triangle)
+  
+
+
+
+<hr/><span class=stitre><br/>mise en forme de la page et du texte</span>
+
+
+&#60sup>met le texte en exposant
+&#60sub>met le texte en indice
+&#60h1>à&#60h6>titres (du plus gros au plus petit)
+&#60br>saut de ligne
+&#60hr>ligne de séparation
+&#60p>paragraphe
+&#60div>partie de document html, uttilisé pour la mise en forme de la page
+&#60span>uttilisé pour changer l'apparence d'un partie du texte
+
+&#60em> 	pour accentuer une partie de texte
+&#60strong> 	pour signaler une partie importante du texte
+&#60dfn> 	pour signaler une définition
+&#60code> 	pour signaler que le texte est le code d'un programme
+&#60samp> 	pour signaler que le texte est un message d'un programme
+&#60kbd> 	pour signaler que le texte est une commande pour un programme
+&#60var> 	pour signaler que le texte est une variable d'un programme
+
+&#60i>italique
+&#60strike>raye le texte
+
+<hr/><span class=stitre><br/>afficher une autre page web (IFRAM)</span>
+&#60iframe src="[adresse de la page]" width="[largeur en pixel]" height="[hauteur en pixel]"></iframe>
+
+rajouter [frameborder="0"] comme option permet d'effacer les bord de la page affiché
+
+
+<hr/><span class=stitre><br/>les formulaires:</span>
+
+&#60form action="[adresse de la page qui traitera les données du formulaire]" method="post" enctype="multipart/form-data">[champs du formulaire]&#60/form>
+
+&#60textarea rows="[nombre de ligne]" cols="[nombre de colonnes]" name="[nom du champ]">[valeur d'origine du champ]&#60/textarea>
+&#60input size="[largeur du champ en caractère]" name="[nom du champ]" value="[valeur d'origine du champ]"/>
+
+&#60input type="password" name="[nom du champ]" /> champ mot de passe, les lettres sont remplacé par des point ou des étoiles
+&#60input type="hidden" name="[nom du champ]" value="[valeur du champ]" /> champ caché
+&#60input type="submit" value="[texte du bouton]" />bouton de validation du formulaire
+&#60input type="file" name="[nom du champ]" /> pour rajouter un fichier au formulaire
+&#60select name="[nom du champ]">&#60option value="[valeur du 1er choix de la liste]">[texte associé au premier choix de la liste]&#60/option>....&#60/select>champ avec une liste de choix
+&#60input type="checkbox" name="[nom du champ]" value="[valeur du champ]"/>carré a cocher, plusieurs carré du même nom peuvent être selectionnable a la fois 
+&#60input type="radio" name="[nom du champ]" value="[valeur du champ]"/>rond a cocher, un seul rond de même nom est selectionnable a la fois 
+
+
+
+<hr/><span class=stitre><br/>les styles:</span>
+
+pour définir les option de visualisation a un balise html il faut
+soit lui rajouter l'option: style="[liste des option css séparé par des point virgules]"
+ou lui définir un style suivant sont ID ou sa class dans le fichier css (voir description des métadonnées)
+
+<hr/><span class=stitre><br/>pour définir l'apparence du texte</span>
+color:#00ff00; définit la couleur du texte (RGB en hexa)
+font-size: Xpx; le texte aura une taille de X pixel
+font-family:"Times New Roman", Times, serif;  police d'affichage a uttiliser dans l'ordre de préférence
+text-align:center; centre le texte
+text-align:right; aligne le texte a droite
+text-align:left; aligne le texte a gauche (le mode par defaut)
+text-align:justify; affiche le texte en mode justifié
+text-decoration:overline; affiche texte avec une ligne au dessus
+text-decoration:line-through; barre le texte 
+text-decoration:underline; souligne le texte (rique de confusion avec les liens
+text-indent: Xpx; le texte auras une indentation (décalage sur la droite du texte) de X pixel
+
+
+<hr/><span class=stitre><br/>pour définir les bordures et les marges</span>
+
+<div style="background:red;border-style: hidden;border-width: 0px; margin: 0px; padding: 5px 20px 20px 20px; width: 400px; height: 250px;">ligne exterieur (outline) <div style="background:pink;border-style: solid;border-width: 1px;margin: 5px; padding: 5px 20px 20px 20px;"> margin (marge exterieur)<div style="background:blue;border-style: solid;border-width: 1px;margin: 5px; padding: 5px 20px 20px 20px;">bordure (border) <div style="background:yellow;border-style: solid;border-width: 1px;margin: 5px; padding: 5px 20px 20px 20px;"> paddinf (marge interieur)<div style="background:green;border-style: hidden;border-width: 0px; margin: 5px; padding: 20px;">contenue de l'objet</div></div></div></div></div>
+
+width: Xpx; (largeur de la zone contenu)
+height: Ypx; (hauteur de la zone contenu)
+valeur exprimé en pixel ou en % de la page
+
+la taille de l'objet fait réference a la zone contenu de l'objet (sauf pour certains navigateur qui y incluent la marge interieur et la bordure)
+
+si la ligne exterieurs ou la bordure ont la même valeurs sur tout les cotés alors il n'y a qu'un seul paramètre par definition
+border-style: solid; apparence 
+border-color: #333333; couleur
+border-width: 2px; épaisseur
+outline-style: dotted;
+outline-color: #00FF00;
+outline-width: 1px;
+
+ou comme ça si on veut définire des paramêtres différent pour chaque coté:
+border-top: 2px solid #333333; 
+border-bottom: 2px solid #333333; 
+border-left: 2px solid #333333; 
+border-right: 2px solid #333333; 
+
+outline-top: 1px dotted #00FF00; 
+outline-bottom: 1px dotted #00FF00;
+outline-left: 1px dotted #00FF00; 
+outline-right: 1px dotted #00FF00;
+
+le "style" de la bordure ou  de la ligne exterieur peut prendre les valeurs suivante:
+ <span style="vborder-style: none;border-color: #333333;border-width: 4px;">none</span> <span style="border-style: solid;border-color: #333333;border-width: 4px;">solid</span> <span style="border-style: dashed;border-color: #333333;border-width: 4px;">dashed</span> <span style="border-style: dotted;border-color: #333333;border-width: 4px;">dotted</span> <span style="border-style: double;border-color: #333333;border-width: 4px;">double</span> <span style="border-style: groove;border-color: #333333;border-width: 4px;">groove</span> <span style="border-style: inset;border-color: #333333;border-width: 4px;">inset</span> <span style="border-style: outset;border-color: #333333;border-width: 4px;">outset</span> <span style="border-style: ridge;border-color: #333333;border-width: 4px;">ridge</span>
+
+la marge exterieur est toujour transparente et la marge interieur est de la couleur de fond de l'objet, de plus on a pas besoin de définir de "style" pour celles ci, le seul paramètre dont on a besoins est l'épaisseure
+margin: 20px;
+padding: 10px;
+
+ou alors on définit une marge diffférente pour chaque coté, il y a donc 4 paramètre par definition
+margin: 20px 20px 10px 20px (haut droite bas gauche)
+
+<hr/><span class=stitre><br/>pour définir la position</span>
+les positionnement sont calculé a partir de la marge exterieur des objets
+
+position: static; valeur par défaut
+
+position:fixed; position de l'élément par rapport a la fenêtre du navigateur
+
+position:relative; est le déplacement de l'objet par rapport a la position qu'il aurait ocuppé normallement (l'endroit ou il apparait est alors laissé vide)
+
+position:absolue; est la position par rapport a l'objet parent le plus proche qui n'est pas en positionnement "static"
+
+a part en positionnement "static" il faut rajouter deux décalage (un en horizontal et un en vertical)
+top: [valeur]px; décalage vertical par rapport au haut de l'objet de réference
+bottom: [valeur]px; décalage verticale par rapport au bas de l'objet de réference
+left: : [valeur]px; décalage horizontale par rapport au coté gauche de l'objet de réference
+right: : [valeur]px; décalage horizontale par rapport au coté droit de l'objet de réference
+
+<hr/><span class=stitre><br/>pour définir l'image et/ou la couleur de fond</span>
+
+background:#ffffff; pour une couleur
+background:url([adresse de l'image]); pour une image
+background:url([adresse de l'image]) no-repeat Xpx Ypx; pour une image simple a la position X,Y
+background:url([adresse de l'image]) repeat; pour une image répété
+background:url([adresse de l'image]) repeatx top; pour une image répété horizontalement en haut
+background:url([adresse de l'image]) repeaty left; pour une image répété verticalement a gauche
+
+|

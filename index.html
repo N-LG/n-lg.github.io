@@ -1,1 +1,61 @@
-bientôt ici, vous verrez un site pourris
+﻿<!DOCTYPE html>
+<html><head>
+<meta charset="UTF-8">
+<title>eN CONSTRUCTION...</title>
+<link href="type-s.css" rel="stylesheet" media="screen" type="text/css">
+<meta name="viewport" content="width=device-width, target-densitydpi=device-dpi"/>
+<meta name="robots" content="index,follow">
+<meta name="revisit-after" content="14">
+<script type="text/javascript">
+
+
+function jmpArticle(index) {
+//récupère les éléments
+
+const adresse = "https://n-lg.github.io/A"+index+".txt"
+var request = new XMLHttpRequest();
+request.open('GET', adresse, true);
+    request.send(null);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+	const data = request.responseText.split("|");
+
+	//modifie les éléments
+	var elem = document.getElementById('corp');
+	document.title = data[0];
+	elem.innerHTML = data[8];
+        }
+    }
+}
+
+
+function rech() {
+alert("Hélas! pas de recherche disponible pour l'instant");
+}
+
+
+</script>
+</head>
+
+<body>
+<div class="tete">
+<a href="http://n-lg.github.io" title="retour a la page principale"><img src="base.png"></a><a href="http://n-lg.github.io/rss.html" title="flux RSS"><img src="rss.png"></a>
+<span class="recherche"><input size="16" name="rech"/><button onclick="rech();">rechercher</button></span>
+</div>
+
+<div id="corp" class="corp">
+
+
+Bienvenue dans cet horrible site oueb ou je vais vous parler de truc qui m'intéresse (et je l'espère vous aussi)<br/>
+Sur Github, je suis <a href="https://github.com/N-LG">N-LG</a> mais j'ai plein d'autres pseudo...
+
+<br/><br/><br/>
+
+<hr/>
+<a onclick="jmpArticle('35');">résumé HTML et CSS</a><br/>
+pour l'instant pas grand chose parce que je suis en plein réapprentissage du javascript
+
+</div>
+</body></html>
+
+
