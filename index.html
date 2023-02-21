@@ -9,10 +9,43 @@
 <script type="text/javascript">
 
 
+//variables globales
+var url_base = "https://n-lg.github.io";
+var url_param = ["",""];
+
+
+function initpage(){
+//recupération de parametre de l'URL
+var url_string = (window.location +"?=").toString();
+var url_array = url_string.split("?");
+//url_base = url_array[0] //adresse de base
+var param = url_array[1].split("=");  //0=nom du parametre 1=valeur du parametre
+
+
+var u = document.getElementById("listePage");
+u.innerHTML = "" ;
+var test = ["35","résumé HTML et CSS"]; //a remplacer par des infos sur fichier exterieur plus tard
+
+for (let i=0;i<test.length;i = i+2){
+u.innerHTML = u.innerHTML + '<a href="'+url_base+'?arti=' + test[i]+ '">'+ test[i+1]+ '</a><br/>';
+}
+
+
+
+if (param[0]="arti"){
+jmpArticle(param[1]);
+}
+
+
+}
+
+
+
+
 function jmpArticle(index) {
 //récupère les éléments
 
-const adresse = "https://n-lg.github.io/A"+index+".txt"
+const adresse = url_base +"A"+index+".txt"
 var request = new XMLHttpRequest();
 request.open('GET', adresse, true);
     request.send(null);
@@ -23,7 +56,7 @@ request.open('GET', adresse, true);
 	//modifie les éléments
 	var elem = document.getElementById('corp');
 	document.title = data[0];
-	elem.innerHTML = data[8];
+	elem.innerHTML = data[8].replace(/\n\r?/g,"<br/>"); //remplace tout les sauts de lignes
         }
     }
 }
@@ -37,7 +70,7 @@ alert("Hélas! pas de recherche disponible pour l'instant");
 </script>
 </head>
 
-<body>
+<body onload="initpage()">
 <div class="tete">
 <a href="http://n-lg.github.io" title="retour a la page principale"><img src="base.png"></a><a href="http://n-lg.github.io/rss.html" title="flux RSS"><img src="rss.png"></a>
 <span class="recherche"><input size="16" name="rech"/><button onclick="rech();">rechercher</button></span>
@@ -54,6 +87,10 @@ Sur Github, je suis <a href="https://github.com/N-LG">N-LG</a> mais j'ai plein d
 <hr/>
 <a onclick="jmpArticle('35');">résumé HTML et CSS</a><br/>
 pour l'instant pas grand chose parce que je suis en plein réapprentissage du javascript
+
+
+<p id="listePage"></p>
+
 
 </div>
 </body></html>
