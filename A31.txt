@@ -1,0 +1,31 @@
+Codage UTF8 d'Unicode|UTF8, UTF-8, unicode|nope|nope|0||ou comment avoir des accents et des lettres bizzards||d'abord l'unicode qu'est ce que c'est? c'est un liste de tout les caractère (ou glyphe) uttilisé pour communiquer, cette liste contient les lettres des principaux langage, les symboles de ponctuation et divers symboles<br/><a href="http://alis.isoc.org/codage/iso10646/index.html" >liste de symboles</a>
+
+A chaque symbole on associe un numéro, par exemple pour le symbole hiragana &#12354; (A majuscule) a le numéro 12354 (3042 en héxadécimal). Donc pour chaque symbole un numéros, le principe ne diffère pas de l'ASCII mais l'étend a un plus grand nombre de symbole (plus de 1 millions!, 21 bits d'uttilisé). sauf qu'un problème se pose: les numéros unicode ne tienne plus sur un octet comme l'ascii.
+
+<span class=stitre>l'UTF8</span>
+
+L'UTF8 a été devellopé pour pouvoir enregistrer des chaine de caractère unicode sur une chaine d'octet d'une manière semblable a une chaine ascii. Le nombre d'octet nécessaire pour coder un caractère dépend du nombre de bit dont on a besoin pour désigner le caractère:<br/>
+
+caractères utilisant de 0 à 7 bits: codage sur un octet
+<img src="img/utf8-1.png">
+
+caractères utilisant de 8 a 11 bits: codage sur 2 octets
+<img src="img/utf8-2.png">
+
+caractères utilisant de 12 à 16 bits: codage sur 3 octets
+<img src="img/utf8-3.png">
+
+caractères utilisant de 17 à 21 bits: codage sur 4 octets
+<img src="img/utf8-4.png">
+
+il est interdit de coder un caractère avec un nombre d'octet superieur au stricte nécessaire, en théorie c'est faisable mais le fait qu'il soit possible de coder un caractère de plusieur façon compliquerait inutilement les programmes de reconaissance de texte
+
+le codage sur un octet coresspond aux caractère de l'ASCII standard. de cette façon la plupart des lettres d'un texte en langue d'origine latine ne nécessite qu'un seul octet pour être codé 
+
+lorsque que le logiciel ne sais pas que le texte est en UTF8 il peut se produire des erreur d'affichage du genre "Ã©" au lieu de "é" et "Ã" au lieu de "è", ces erreurs ne sont pas très gênante pour  un texte écrit dans un alphabet latin car  la plupart des lettres sont codé en ascii mais ça devient incompréhensible lorsque le texte est en japonais, coréen ou arabe par exemple (ou avec les émoticone, é_è deviendrait Ã©_Ã )
+
+
+<hr/><span class=note>bonus:</span>
+Pour pouvoir insérer n'importe quel symbole dans un document html on uttilise la chaine &#38&#35&#49&#50&#51&#53&#52 (exemple pour le symbole &#12354;) sauf si le fichier texte est enregistré en UTF8 car ça devient inutile
+ 
+|

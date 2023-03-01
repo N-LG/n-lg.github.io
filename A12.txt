@@ -1,0 +1,312 @@
+commandes Hayes pour modem|hayes, modem|nope|nope|0||Liste des commande Hayes (ou AT) avec les options et les extensions||Les commande Hayes ont pour but de standardiser les configurations de modem branché sur port série, grâce a ce système on peut configurer le modem d'une façon similaire a une console. Grâce a un logiciel de terminal (hyper terminal sous windows par exemple) vous pourrez configurer vous même votre modem sans passer par un logiciel spécifique au modem
+
+la plupart des modems interne sont en fait des "softmodem" c'est a dire des modem logiciel, la carte électronique ne contient alors qu'une puce de carte son branché a un circuit de téléphone. mais il y  a toujours moyen d'utiliser un port série virtuel pour pouvoir configurer le modem par commande hayes
+
+toutes les commandes doivent être validé par le code Ascii CR (carriage return, valeur 013h) excepté les commandes +++ et a/
+
+
++++
+séquence d'échappement, annule le transfert des données et rend le modem disponible pour recevoir une commande, pas besoin de valider la commande par CR
+
+A/
+Envoie une nouvelle fois la commande précédente au modem, pas besoin de valider la commande par CR
+	
+ATA
+Répond à un appel
+
+ATP
+Numérotation par impulsion.
+
+ATT	
+Numérotation par tonalité DTMF.
+
+ATDx
+Commande au modem de composer le numéro de téléphone x 
+
+ATDPx
+Commande au modem de composer le numéro de téléphone x par impulsion.
+
+ATDTx
+Commande au modem de composer le numéro de téléphone x par tonalité DTMF.
+
+
+ATHx
+raccroche/décroche
+ATH0	Raccroche (se déconnecte de la ligne téléphonique).
+ATH1	Décroche (se connecte à la ligne téléphonique).
+
+ATEx
+Détermine si les caractères que vous envoyez au modem sont renvoyés en écho. la plupart des logiciel de terminaux n'affiche pas les caractères tapé par l'utilisateur
+ATE0	Désactivé
+ATE1	Activé
+
+
+ATIx
+Demande d'informations au modem
+ATI0	5600
+ATI1	255
+ATI2	OK
+ATI3	Version du logiciel
+ATI4	OK
+ATI5	Raison du raccrochage
+ATI6	Indicatif du pays
+ATI7	Code du produit
+
+ATNx
+Niveau sonore du haut-parleur
+ATM0	Muet
+ATM1	Faible
+ATM2	Moyen
+ATM3	Fort
+
+ATMx
+Contrôle du haut-parleur:
+ATM0	Muet
+ATM1	Actif pendant la phase de synchronisation uniquement
+ATM2	Toujours actif
+ATM3	Muet pendant la numérotation et pendant le transfert de données, actif pendant la progression de la communication
+
+
+ATOx
+Retour en mode communication Ce paramètre détermine si le modem entame une nouvelle procédure de connexion après être passé en mode ligne suite à une séquence d'échappement, ou après un point-virgule dans des séquences de numérotation.
+ATO0	Pas de resynchronisation
+ATO1	Resynchronisation
+ATO2	Initialise la renégociation de la vitesse.
+ATO3	Renégociation de la vitesse avec silence
+
+
+ATQ
+Affichage des codes de résultat Le modem peut envoyer des codes de résultat et des messages de connexion à la suite d'une connexion fructueuse ou infructueuse, après avoir établi un débit de données, ainsi que des protocoles de correction d'erreurs et de compression de données. Reportez-vous à : ATV; AT\V; ATX.
+ATQ0	Active l'affichage.
+ATQ1	Désactive l'affichage.
+
+ATV
+Détermine si le modem envoie des messages de forme courte ou longue à l'application de communication pour indiquer l'état, la vitesse et le mode de connexion.
+ATV0	Envoie un code numérique (forme courte).
+ATV1	Envoie un message de texte (forme longue).
+
+ATXx
+Sélectionne les codes de résultat d'évolution des appels à renvoyer.
+ATX0	No Carrier (pas de porteuse); Connect (connexion). Le modem signale l'absence de porteuse et le succès ou l'échec de la connexion ; le modem compose le numéro sans attendre la tonalité.
+ATX1	No Carrier (pas de porteuse) ; Connect (connexion) ; Connect <rate> (<vitesse> de connexion). Le modem signale l'absence de porteuse, le succès ou l'échec de la connexion et la vitesse à laquelle la connexion a été établie avec le terminal.
+ATX2	No Carrier (pas de porteuse) ; Connect (connexion) ; Connect <rate> (<vitesse> de connexion) ; No Dial-tone (pas de tonalité d'appel). Le modem signale l'absence de porteuse, le succès ou l'échec de la connexion, la vitesse à laquelle la connexion a été établie avec le terminal et l'absence de tonalité.
+ATX3	No Carrier (pas de porteuse) ; Connect (connexion) ; Connect <rate> (<vitesse> de connexion); Busy-tone (tonalité d'occupation). Le modem signale l'absence de porteuse, le succès ou l'échec de la connexion, la vitesse à laquelle la connexion a été établie avec le terminal et la présence d'une tonalité d'occupation.
+ATX4	No Carrier (pas de porteuse) ; Connect (connexion) ; Connect <rate> (<vitesse> de connexion); No Dial-tone (pas de tonalité); Busy-tone (tonalité d'occupation). Le modem signale l'absence de porteuse, le succès ou l'échec de la connexion, la vitesse à laquelle la connexion a été établie avec le terminal, l'absence de tonalité et la présence d'une tonalité d'occupation.
+
+ATZ
+Réinitialise les paramètres du modem dans leur configuration par défaut.
+
+ATSx?
+consulte le registre numéros x
+
+ATSx=y
+affecte la valeur y au registre x
+
+
+registre du modem:
+<table cellspacing=no border=2><tr><td>numéros<br/>de registre</td><td>valeurs</td><td>Descriptions</td></tr><tr><td>0</td><td>0 à 255</td><td>Nombre de sonneries avant réponse automatique 0=réponse automatique désactivé</td></tr><tr><td>1</td><td>0 à 255</td><td>Compte le nombre de sonneries provenant d'un appel extérieur</td></tr><tr><td>2</td><td>0 à 255</td><td>Spécifie le caractère ASCII n en tant que caractère d'échappement.
+par défaut = 43 (+)</td></tr><tr><td>3</td><td>0 à 255</td><td>Utilise le caractère ASCII n en tant que caractère de retour chariot.
+par défaut = 13 (CR)</td></tr><tr><td>4</td><td>0 à 255</td><td>Utilise le caractère ASCII n en tant que caractère de saut de ligne.
+par défaut = 10 (LF)</td></tr><tr><td>5</td><td>0 à 255</td><td>Utilise le caractère ASCII n en tant que caractère de retour arrière.
+par défaut = 8 (BS)</td></tr><tr><td>6</td><td>0 à 255</td><td>Avant de composer le numéro, le modem décroche et attend n secondes.
+Remarque : Lorsque l'option ATX2 ou ATX4 est active, la valeur S6 n'est pas prise en compte.</td></tr><tr><td>7</td><td>0 à 255</td><td>Fait une pause de n secondes (n=0 à 255) avant de composer le numéro.</td></tr><tr><td>8</td><td>0 à 255</td><td>Fait une pause de n secondes (n=0 à 255) pour un modificateur de numérotation dans une séquence de numérotation.
+par défaut = 2</td></tr><tr><td>9</td><td>0 à 255</td><td>pas d'info</td></tr><tr><td>10</td><td>0 à 255</td><td>Raccroche n secondes après la désactivation du signal DCD, par incréments de 0,1 seconde. 
+par défaut = 14</td></tr><tr><td>11</td><td>60 à 255</td><td>Précise la durée, par pas de 1ms, de la tonalité DTMF lorsqu'elle est émise.
+par défaut = 72</td></tr><tr><td>12</td><td>0 à 255</td><td>Précise l'intervalle, par incréments de 0,02 seconde, qui doit être présent avant et après la séquence
+d'échappement (+++) pour que le modem reconnaisse la commande d'échappement et entre en mode commande.
+Si S12=0, la vitesse à laquelle vous entrez la séquence d'échappement est sans importance.
+par défaut = 50</td></tr><tr><td>13</td><td>0 à 255</td><td>pas d'info</td></tr><tr><td>14</td><td>0 à 255</td><td>pas d'info</td></tr><tr><td>15</td><td>0 à 255</td><td>pas d'info</td></tr><tr><td>16</td><td>0 à 255</td><td>pas d'info</td></tr><tr><td>17</td><td>0 à 255</td><td>pas d'info</td></tr><tr><td>18</td><td>0 à 255</td><td>Précise la durée d'exécution d'un test ; n=0 à 255. Configuration par défaut = 0</td></tr></table>
+
+AT&Cx
+Contrôle le signal DCD (détection de porteuse)
+AT&C0	Signal toujours actif
+AT&C1	Signal actif en mode ligne uniquement
+
+AT&D
+Contrôle le mode de fonctionnement du signal DTR (terminal de données prêt)Détermine le mode de réponse du modem au signal DTR fourni par le terminal (Data Terminal Equipment - DTE).
+AT&D0	Ignore le signal DTR.
+AT&D1	Entre en mode commande lorsque le signal DTR passe du mode activé au mode désactivé.
+AT&D2	Interrompt la connexion lorsque le signal DTR passe du mode activé au mode désactivé.
+AT&D3	Réinitialise les paramètres du modem dans leur configuration par défaut lorsque le signal DTR passe du mode activé au mode désactivé.
+
+AT&Gx
+Tonalité de garde
+&G0	Muet
+&G1	Tonalité de garde de 550 Hz
+&G2	Tonalité de garde de 1 800 Hz
+
+AT&Ix
+Niveau d'émission de numérotation
+&In	Niveau n; n = 0 à 15. Par défaut :
+&I99	Niveau automatique
+
+AT&P
+Utilisé lorsque le modem est configuré pour utiliser une numérotation par impulsion. 
+&P0	Rapport travail-repos 40/60
+&P1	Rapport travail-repos 33/67
+&P2	Rapport travail-repos 38/62
+
+AT&R
+Contrôle le signal CTS (prêt à émettre)
+&R0	Normal
+&R1	Toujours actif
+
+AT&S
+Contrôle le signal DSR (poste de données prêt)
+&S0	Toujours actif
+&S1	Actif lorsque le modem reconnaît un modem distant
+
+AT&T
+Test
+&T0	Arrête le test
+&T1	Initialisation d'un test de bouclage analogique localDébranchez la ligne téléphonique de l'entrée de la ligne du modem avant d'utiliser cette commande.Définissez S-Register 46 sur 23 (ATS46=23) avant d'exécuter &T1.
+
+AT&V
+Etat du modem
+&V0	Rapport de forme courte
+&V1	Rapport sur la connexion courante ou sur la dernière connexion
+&V2	Rapport de forme longue
+
+AT%C
+Mode compression de données 
+(Data Compression - DC)Détermine si le modem utilise des méthodes destinées à augmenter le débit effectif de données en réduisant le nombre de bits utilisés pour représenter les données
+AT%C0	Désactiver la compression
+AT%C1	Activer la compression
+
+AT%D
+Contrôler le délai entre la détection d'une demande de déconnexion et le moment où le modem se déconnecte de la ligne téléphonique
+AT%D0	Pas de délai
+AT%Dn	Délai de n secondes (n = 1 à 255)
+
+AT%Lx
+Définit la vitesse minimale utilisée par le modem lors de la connexion en mode modulation de données.
+AT%L0	Vitesse minimale prise en charge par le modem (300 bits/s)
+AT%L1	300 bits/s
+AT%L2	1 200 bits/s
+AT%L3	2 400 bits/s
+AT%L4	4 800 bits/s
+AT%L7	7 200 bits/s
+AT%L6	9 600 bits/s
+AT%L8	12 000 bits/s
+AT%L9	14 400 bits/s
+AT%L11	16 800 bits/s
+AT%L12	19 200 bits/s
+AT%L13	21 600 bits/s
+AT%L14	24 000 bits/s
+AT%L15	26 400 bits/s
+AT%L16	28 800 bits/s
+AT%L17	31 200 bits/s
+AT%L18	33 600 bits/s
+AT%L19	32 000 bits/s
+AT%L20	34 000 bits/s
+AT%L21	36 000 bits/s
+AT%L22	38 000 bits/s
+AT%L23	40 000 bits/s
+AT%L24	42 000 bits/s
+AT%L25	44 000 bits/s
+AT%L26	46 000 bits/s
+AT%L27	48 000 bits/s
+AT%L28	50 000 bits/s
+AT%L29	52 000 bits/s
+AT%L30	54 000 bits/s
+AT%L31	56 000 bits/s
+AT%L32	58 000 bits/s
+AT%L33	60 000 bits/s
+AT%L34	28000 bits/s
+AT%L35	29333 bits/s
+AT%L36	30666 bits/s
+AT%L37	33333 bits/s
+AT%L38	34666 bits/s
+AT%L39	37333 bits/s
+AT%L40	38666 bits/s
+AT%L41	41333 bits/s
+AT%L42	42666 bits/s
+AT%L43	60 000 bits/s
+AT%L44	46666 bits/s
+AT%L45	49333 bits/s
+AT%L46	50666 bits/s
+AT%L47	53333 bits/s
+AT%L48	54 666 bits/s
+
+AT%Bx
+Définit la vitesse maximale utilisée par le modem lorsqu'il se connecte en mode de modulation de données pour remplir des fonctions telles qu'un accès Internet ou un transfert de fichier
+AT%B0	Vitesse maximale prise en charge par le modem
+AT%B1	300 bits/s
+AT%B2	1 200 bits/s
+AT%B3	2 400 bits/s
+etc..... (même paramètres que pour la commande du choix de vitesse de modulation minimal AT%Ln)
+
+AT\K
+Méthode de gestion des interruptions
+AT\K1	Destructive accélérée
+AT\K3	Non destructive accélérée
+AT\K5	Non destructive non accélérée
+
+AT\N
+Mode correction d'erreurs (Error Correction - EC)
+AT\N0	Normal
+AT\N1	Direct
+AT\N4	LAP-M uniquement
+AT\N6	Fiable
+AT\N7	Fiabilité automatique
+
+AT\Q
+Contrôle de flux du terminal (DTE)
+AT\Q0	Désactivé
+AT\Q1	XON/XOFF (contrôle de flux par logiciel)
+AT\Q3	RTS/CTS (contrôle de flux par matériel)
+
+AT\T
+Déconnexion en cas d'inactivité au terminal
+AT\T0	Désactivé
+AT\Tn	Déconnexion après n secondes/minutes d'inactivité par l'ordinateur ; n = 0 à 255
+
+AT\V
+Format des messages de connexion
+Détermine les messages émis par le modem au moment de la connexion
+AT\V0	Afficher la vitesse terminal (DTE)
+AT\V1	Vitesse terminal avec message EC /DC (correction d'erreurs/compression de données)
+AT\V2	Affiche la vitesse ligne (DCE)
+AT\V3	Vitesse ligne avec message EC/DC (correction d'erreurs/compression de données)
+AT\V4	Vitesse ligne avec modulation et message EC/DC (correction d'erreurs/compression de données)
+
+
+
+
+AT*DD
+Temps d'attente avant la composition du numéro Précise la durée de l'attente lorsque le modem rencontre un W ou un w lors du traitement d'une séquence de numérotation 
+AT*DD0	2 secondes
+AT*DD1	3 secondes
+AT*DD2	4 secondes
+AT*DD3	6 secondes
+AT*DD4	12 secondes
+AT*DD5	15 secondes
+AT*DD6	20 secondes
+AT*DD7	30 secondes
+AT*DD8	40 secondes
+
+AT*LS
+Protocole de communication à faible vitesseVous permet de sélectionner un protocole de communication pour communiquer avec des modems anciens ou à très faible vitesse. 
+AT*LS0	Bell 103
+AT*LS1	ITU-T V.21 (norme internationale)
+AT*LS2	Bell 103 ou ITU-T V.21 (détermination automatique)
+
+AT*MM
+Mode de modulation
+AT*MM0	Modulation automatique V.34
+AT*MM1	V.21
+AT*MM2	Bell 103
+AT*MM4	V.22/Bell 212
+AT*MM5	V.22bis
+AT*MM6	V.23
+AT*MM10	V.32 uniquement
+AT*MM11	V.32 bis
+AT*MM12	V.34 uniquement
+AT*MM13	K56flex uniquement
+AT*MM14	K56flex modulation automatique
+AT*MM15	V.90 uniquement
+AT*MM16	V.90 Automatique
+
+
+
+|

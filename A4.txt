@@ -1,0 +1,47 @@
+conversions entre adresse LBA et CHS |lba,chs,assembleur,x86,x386|11|11|1||conversion LBA vers CHS (et inversement) en assembleur x86||
+Lors de la communication entre l'ordinateur et le disque dur on a besoin de designer un secteur en particulier du disque, pour cela il existe deux manière: l'adresse CHS (cylinder head sector) et l'adresse LBA (logical block adresse)
+
+l'adressage CHS vient de la structure physique du disque dur, petit récapitulatif:
+
+un disque dur est un empilement de disques
+<img src="img/pile.jpg">
+chaque disque a plusieurs pistes et chaque piste a plusieurs secteurs
+<img src="img/disque.jpg">
+le cylindre est l'ensemble des piste de même numéros
+
+cette architecture a conduit a l'uttilisation de l'adressage CHS ,pour simplifier cela l'adressage LBA a été dévelloppé. il consiste a numéroter les secteur sans se soucier des piste et des face, le secteur zéro est le secteur de coordonné 0,0,1 le suivant est le 0,0,2 etc.. dès que l'on est arrivé a la fin de la piste on passe au disque suivant: 0,1,1 et on continu jusque au dernier disque ensuite on revient au premier disque et on passe a la piste suivante 1,0,1
+
+pour simplifier les formules on vas uttiliser les abréviation suivante:
+C=N° du cylindre ou N° de la piste(commence a 0)
+H= N° de la tête ou N° de disque(commence a 0)
+S= N° de secteur (commence a 1)
+LBA=adresse linéaire du secteur
+
+LBA=(S-1)+(H*Nombre de secteur par piste)+(C*Nombre de secteur par cylindre)
+
+pour la conversion inverse c'est un peut plus compliqué
+C=entier résultat de la division (LBA/Nb de secteur par cylindre)
+R=reste de la division (LBA/Nb de secteur par cylindre)
+H=entier résultat de la division (R/Nb de secteur par piste)
+S=1+ reste de la division (R/Nb de secteur par piste)
+
+R n'est une variable qui n'as rien d'une coordonné de secteur mais qui sert a simplifier le calcul de la conversion (a mon goût)
+
+voici un petit exemple d'une fonction en assembleur qui fait la conversion de LBA vers CHS:
+<code>entrée: eax=LBA
+sortie: ax=N° de tête
+	bx=N° de piste
+	dx=N° de secteur
+
+mov ecx,Nbdesecteurparcylindre
+xor edx,edx
+div ecx
+mov ebx,eax
+mov eax,edx
+mov ecx,Nbdesecteurparpiste
+xor edx,edx
+div ecx
+inc edx
+</code>
+
+|

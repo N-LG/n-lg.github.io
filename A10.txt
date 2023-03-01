@@ -1,0 +1,23 @@
+Mortimer 0.14|||nope|0||utilisation des disques durs et CDrom|img/mortimer.jpg|je viens de terminer les sous fonctions qui vont permettre a Mortimer 0.14 de lire des fichier sur des disquette, des CDROM, et sur les disque durs (et pas seulement le reprtoire racine) deux nouvelles commandes on fait leur apparition: CD (qui permet de changer de dossier courant) et FIX (qui permet d'enregistrer le dossier systeme dans lequel se trouve les commandes)
+
+<a href="zip/mrt14.zip">Télecharger Ici</a> (fournis avec le code source pour une compilation avec Fasm) 
+
+l'apparition de ces fonction va compliquer un peut l'uttilisation du système, car au démarrage du système aucun dossier courant ni aucun dossier système n'est définit, l'uttilisateur devras définir ces dossier en premier, par exemple: "cd #ds" pour acceder au repertoire racine de la disquette puis "fix" pour definir celui ci comme le dossier en cours.
+Pour acceder au repertoire racine du CDROM il va falloir uttiliser la commande "cd #cd0"
+#cd0 correspond au lecteur de cdrom branché en maître sur le premier controlleur IDE,
+#cd1 est le lecteur branché en esclave sur le premier controleur IDE,
+#cd2 est le lecteur branché en maître sur le deuxième controlleur IDE,
+et ainsi de suite sur jusque a #cd7
+Pour accéder aux disques dur, il suffit d'utiliser la command "cd #dd00" le premier chiffre après le dd correspond a disque a explorer (de 0 à 7) et le second correspond au numéros de la partition (de 0 à 3) 
+
+j'ai identifié quelques problème d'utilisation que je vais essayer de corriger assez vite:
+- impossible d'utiliser directement les fonctions avancé du dossier système, il faut faire minimum deux commande pour y arriver
+- la commande cd ne permet pas de revenir au dossier parent
+- impossible de connaitre l'adresse du dossier courant dans lequel on se trouve
+- impossible de connaitre le nom des disque utilisable
+- l'accès au dossier sur les CDrom ne se font pas du premier coup
+
+
+
+
+||||||

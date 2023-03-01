@@ -1,0 +1,30 @@
+SeLG|||nope|0||système d'exploitation personnel ||SeLG est mon projet de système d'exploitation multitache, c'est la suite du projet Mortimer qui n'est qu'un simple systeme d'exploitation monotache. au départ je souhaitait finir completement la version monotache avant de commencer la version multitache mais comme je n'arrivit pas a finir correctement le système de gestion des fichier a cause de la gestion statique de la mémoire je me suis lancé dans le dévellopement d'un systême d'exploitation multitache
+
+au moment ou j'écrit ses lignes je suis en train de travailler sur les fonction système d'accès aux fichiers. j'ai terminé les fonction de lecture des fichiers de type FTP. je travaille actuellement sur l'écriture des fichiers. 
+
+<hr>
+<h2>versions</h2>
+du plus ancien au plus récent
+
+
+v0.1 Avril 2014
+version de dévellopement des système de gestion de la ram, et de l'affichage en mode console
+
+v0.2 AVRIL 2016
+version de dévellopement d'accès en lecture des fichier ISO9660 et FAT
+
+v0.3 juin 2016
+version de dévellopement de l'execution en mode multitache 
+
+v0.4 octobre 2016
+version de dévellopement de l'accès en ecriture des fichiers FAT (pas encore commencé!)
+
+v0.5 février 2017
+version de dévellopement de la gestion du mode graphique (pas encore commencé!)
+
+v0.6 ???????
+version de dévellopement de la gestion des périphériques USB
+
+J'ai commencé à partir de la version 0.4 de faire des applications qui fonctionne sur le système et à partir de la version 0.6 je publierai les sources. Voici la liste des applications en cours de développement déjà fini:
+-edt éditeur de fichier texte
+-edh éditeur de fichier binaire ||||||
