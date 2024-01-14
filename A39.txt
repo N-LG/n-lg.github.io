@@ -1,4 +1,4 @@
-SeLG|||nope|0||système d'exploitation personnel ||SeLG est mon projet de système d'exploitation multitache, c'est la suite du projet Mortimer qui n'est qu'un simple systeme d'exploitation monotache. au départ je souhaitait finir completement la version monotache avant de commencer la version multitache mais comme je n'arrivit pas a finir correctement le système de gestion des fichier a cause de la gestion statique de la mémoire je me suis lancé dans le dévellopement d'un systême d'exploitation multitache
+﻿SeLG|||nope|0||système d'exploitation personnel ||SeLG est mon projet de système d'exploitation multitache, c'est la suite du projet <a href="https://n-lg.github.io/?arti=10">Mortimer</a> qui n'est qu'un simple systeme d'exploitation monotache. au départ je souhaitait finir completement la version monotache avant de commencer la version multitache mais comme je n'arrivit pas a finir correctement le système de gestion des fichier a cause de la gestion statique de la mémoire je me suis lancé dans le dévellopement d'un systême d'exploitation multitache
 
 au moment ou j'écrit ses lignes je suis en train de travailler sur les fonction système d'accès aux fichiers. j'ai terminé les fonction de lecture des fichiers de type FTP. je travaille actuellement sur l'écriture des fichiers. 
 
@@ -27,4 +27,15 @@ version de dévellopement de la gestion des périphériques USB
 
 J'ai commencé à partir de la version 0.4 de faire des applications qui fonctionne sur le système et à partir de la version 0.6 je publierai les sources. Voici la liste des applications en cours de développement déjà fini:
 -edt éditeur de fichier texte
--edh éditeur de fichier binaire ||||||
+-edh éditeur de fichier binaire
+
+
+
+<hr>
+<h2>[mise a jour de Janvier 2024]</h2>
+
+depuis le temps ou j'ai écrit cette page, il y as eu bien des changement...
+le nom du projet est devenue SEAC, il est disponible sur <a href="https://github.com/N-LG/SEAC">github</a>, possède un <a href="https://github.com/N-LG/SEAC/wiki">wiki</a> et je n'ai pas encore finis la gestion des périphériques USB
+
+
+||||||

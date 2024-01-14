@@ -1,4 +1,4 @@
-résumé html css||nope|nope|0||petit résumé pour le débutant en html||voici un petit rammassis de note concernant le html et le css. c'est tres incomplet mais il contient toute les conaissance qui m'ont permis de créer le design pourris de ce site
+﻿résumé html css||nope|nope|0||petit résumé pour le débutant en html||voici un petit rammassis de note concernant le html et le css. c'est tres incomplet mais il contient toute les connaissance qui m'ont permis de créer le design pourris de ce site
 
 si vous vouyez une connerie n'hesitez pas a me le signaler
 
