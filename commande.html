@@ -17,7 +17,6 @@ const cmd = document.getElementById('commande').value;
 
 document.getElementById('commande').value = "";
 
-focus();
 const arg = cmd.split(" ");
 
 if (arg[0]=="about"){
@@ -30,14 +29,17 @@ ajoute("commandes disponibles:<br/>about: affiche des informations sur cette pag
 ajoute("art 4 conversion LBA vers CHS<br/>art 10 Mortimer 0.14<br/>art 12 Commandes Hayes pour modem<br/>art 31 codage utf8<br/>art 35 résumé HTML et CSS<br/>art 39 SeLG<br/><br/>");
 
 }else if(arg[0]=="art"){
-const adresse = url_base +"A"+arg[1]+".txt"
+const adresse = "https://n-lg.github.io/A"+arg[1]+".txt";
 var request = new XMLHttpRequest();
 request.open('GET', adresse, true);
     request.send(null);
     request.onreadystatechange = function () {
         if (request.readyState === 4 && request.status === 200) {
 	const data = request.responseText.split("|");
-	ajoute(data[8].replace(/\n\r?/g,"<br/>")+"<br/><br/>"); //remplace tout les sauts de lignes
+	ajoute("<hr/>Article "+arg[1]+"<br/>");
+	ajoute(data[8].replace(/\n\r?/g,"<br/>")); //remplace tout les sauts de lignes
+	ajoute("<hr/>");
+	focus();
         }
     }
 
@@ -47,7 +49,7 @@ ajoute("<br/>commande inconnue: "+cmd+"<br/><br/>");
 
 }
 
-
+focus();
 }
 
 
