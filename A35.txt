@@ -103,9 +103,9 @@ rajouter [frameborder="0"] comme option permet d'effacer les bord de la page aff
 
 <hr/><span class=stitre><br/>les styles:</span>
 
-pour définir les option de visualisation a un balise html il faut
-soit lui rajouter l'option: style="[liste des option css séparé par des point virgules]"
-ou lui définir un style suivant sont ID ou sa class dans le fichier css (voir description des métadonnées)
+pour définir les option de visualisation a un balise html il faut soit lui rajouter l'option: style="[liste des option css séparé par des point virgules]" ou lui définir un style suivant sa class dans le fichier css ou dans la balise style de l'en-tête
+chaque définition de style doit avoir le format suivant: [nom de la balise].[nom de la classe]{[liste des option css séparé par des point virgules]}
+pour rajouter une classe a une balise il faut rajouter l'option: class="[nom de la classe]" 
 
 <hr/><span class=stitre><br/>pour définir l'apparence du texte</span>
 color:#00ff00; définit la couleur du texte (RGB en hexa)

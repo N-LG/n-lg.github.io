@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html><head>
+
+<title>command</title>
+
+<meta charset="UTF-8">
+
+
+<script type="text/javascript">
+
+
+
+
+function commande() {
+
+const cmd = document.getElementById('commande').value;
+
+document.getElementById('commande').value = "";
+
+focus();
+const arg = cmd.split(" ");
+
+if (arg[0]=="about"){
+ajoute("Simulateur de console<br/>crée par N-LG pour un usage triviale<br/><br/>");
+
+}else if(arg[0]=="help"){
+ajoute("commandes disponibles:<br/>about: affiche des informations sur cette page<br/>help: affiche cette aide<br/>somm: affiche le sommaire<br/>art XXX:affiche l'article XXX<br/><br/>");
+
+}else if(arg[0]=="somm"){
+ajoute("art 4 conversion LBA vers CHS<br/>art 10 Mortimer 0.14<br/>art 12 Commandes Hayes pour modem<br/>art 31 codage utf8<br/>art 35 résumé HTML et CSS<br/>art 39 SeLG<br/><br/>");
+
+}else if(arg[0]=="art"){
+const adresse = url_base +"A"+arg[1]+".txt"
+var request = new XMLHttpRequest();
+request.open('GET', adresse, true);
+    request.send(null);
+    request.onreadystatechange = function () {
+        if (request.readyState === 4 && request.status === 200) {
+	const data = request.responseText.split("|");
+	ajoute(data[8].replace(/\n\r?/g,"<br/>")+"<br/><br/>"); //remplace tout les sauts de lignes
+        }
+    }
+
+
+}else{
+ajoute("<br/>commande inconnue: "+cmd+"<br/><br/>");
+
+}
+
+
+}
+
+
+
+function focus(){
+window.scrollTo(0,document.body.scrollHeight);
+}
+
+function ajoute(chaine){
+document.getElementById('sortie').innerHTML = document.getElementById('sortie').innerHTML + chaine;
+
+}
+
+
+
+</script>
+
+</head>
+<body style="background:#000000;color:#808080;">
+
+
+
+<div>
+<div id=sortie>Bienvenu sur ce syteme!<br/>"help" pour avoir les commandes disponibles<br/><br/>
+</div>
+
+><input style="background:#000000;color:#FFFFFF;border-width: 0px;" type="text"  id="commande" onkeydown="if (event.keyCode===13) commande();">
+</div>
+
+</body></html>
+
+
