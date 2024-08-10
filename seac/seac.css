@@ -31,6 +31,8 @@ font-weight: bold;
 h3 {
 FONT-SIZE: 18pt;
 font-weight: bold;
+margin-top: 40px;
+margin-bottom: 10px;
 }
 
 strong {
@@ -56,12 +58,13 @@ height:60px;
 
 hr{
 width: 75%;
+margin-top: 40px;
+margin-bottom: 40px;
 }
 
-a {
-COLOR: #FFFFFF;;
+p{
+text-align:justify;
 }
-
 
 
 div.superbloc {
@@ -75,7 +78,8 @@ div.bloc {
 background:#FFFFFF;
 text-align:center;
 width: 850px;
-margin: 100px;
+margin-top: 10px;
+margin-bottom: 100px;
 padding: 20px;
 box-shadow: 5px 5px 10px;
 
@@ -83,20 +87,19 @@ box-shadow: 5px 5px 10px;
 
 div.pitibloc {
 background:#6080FF;
+COLOR: #FFFFFF;
 width: 150px;
 margin: 10px;
 padding: 10px;
 
-FONT-SIZE: 16pt;
+font-size: 16pt;
 display:inline-block;
 }
 
 img.petit{
 width:100px;
-height:75px;
+height:150px;
+transform:skewY(20deg);
+transition: all 500ms ease-in-out;
 }
 
-img.gros{
-width:800px;
-height:600px;
-}
