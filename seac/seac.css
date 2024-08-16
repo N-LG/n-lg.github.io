@@ -103,3 +103,13 @@ transform:skewY(20deg);
 transition: all 500ms ease-in-out;
 }
 
+
+button.webring{
+height:35px;
+}
+
+img.webring{
+width:27px;
+height:27px;
+vertical-align:middle;
+}
