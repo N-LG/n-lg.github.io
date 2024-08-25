@@ -48,7 +48,7 @@ border:2px solid #C0C0C0;;
 border-collapse:collapse
 }
 td {
-border:1px solid #C0C0C0;;
+border:1px solid #C0C0C0;
 text-align:justify;
 padding: 5px;
 }
@@ -89,13 +89,23 @@ box-shadow: 5px 5px 10px;
 
 div.pitibloc {
 background:#6080FF;
-COLOR: #FFFFFF;
+color: #FFFFFF;
 width: 150px;
 margin: 10px;
 padding: 10px;
-
 font-size: 16pt;
 display:inline-block;
+}
+
+div.gauche {
+position: fixed; top: 0; left: 0; 
+width: 200px;
+height:100%;
+margin: 0;
+padding: 5px;
+background:#FFFFFF;
+text-align: left;
+z-index: 20;
 }
 
 img.petit{
@@ -114,4 +124,12 @@ img.webring{
 width:27px;
 height:27px;
 vertical-align:middle;
+}
+
+em{
+color: #FF0000;
+}
+
+kbd{
+background: #C0C0C0;
 }

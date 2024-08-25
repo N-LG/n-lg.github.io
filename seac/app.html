@@ -12,7 +12,42 @@
 <div class="bloc">
 <h1><a id="asm">créer une application en Assembleur</a></h1>
 <p>
+voici l'exemple de "hello world" qui est est joint avec les release et est compilable avec la commande <kbd>fasm hello.asm HELLO.FE</kbd> <em>(les parties en rouge sont les parties obligatoires)</em>
 
+<p style="border:2px inset #C0C0C0;">
+
+<em>hello.asm:</em>                      ;label qui ne sert que au cas ou votre editeur texte rajoute au debut de votre texte l'indicateur d'ordre des octets<br/>
+<em>pile equ 4096</em>                   ;definition de la taille de la pile<br/>
+<em>include "fe.inc"</em>                ;include qui contient l'en tête standard<br/>
+<em>db "</em>traditionnel hello world<em>"</em>   ;chaine de caractère decrivant l'application<br/>
+<em>scode:</em>                          ;label du début du segment de code<br/>
+<em>org 0</em>                           ;le code commence toujour a zéro<br/>
+<br/>
+mov ax,sel_dat1 ;choisi le segment de donnée, ici le segment de données N°1<br/>
+mov ds,ax<br/>
+<br/>
+mov al,6        ;fonction n°6: ecriture d'une chaine dans le journal<br/>
+mov edx,msg1    ;adresse du message a afficher<br/>
+int 61h         ;appel fonction systeme générales<br/>
+<br/>
+int 60h         ;fin du programme<br/>
+<br/>
+<em>sdata1:</em>                        ;label du segment de données N°1<br/>
+<em>org 0</em>                          ;les données commencent toujour a zéro</span><br/>
+<br/>
+msg1:<br/>
+db "bonjour tout le monde!",13,0   ;donnée du message: chaine utf8 terminé par le caractère 0<br/>
+<br/>
+<em>sdata2:</em>                        ;label du segment de données N°2<br/>
+<em>org 0</em>                          ;les données commencent toujour a zéros<br/>
+<em>sdata3:</em>                        ;label du segment de données N°3<br/>
+<em>org 0</em>                          ;les données commencent toujour a zéro<br/>
+<em>sdata4:</em>                        ;label du segment de données N°4<br/>
+<em>org 0</em>                          ;les données commencent toujour a zéro<br/>
+<em>findata:</em>                       ;marque la fin des données</span><br/>
+</p>
+
+quelque limitation: le fichier source doit être enregistré au format texte avec un codage utf8 et les noms des fichier executables ne doivent être composé que de chiffres et de majuscules.les fonctions systemes disponible sont listé ici <a href="syscall.html">ICI</a>
 
 
 </p>
@@ -28,6 +63,35 @@
 
 
 </p>
+</div>
+
+
+<div class="gauche">
+installation:<ul>
+<li><a href="app.html#prer">prérequis<a></li>
+<li><a href="app.html#comp">compilation<a><br/></li>
+<li><a href="app.html#inst">installation<a><br/></li>
+<li><a href="app.html#maj">mise a jours<a><br/></li>
+</ul>
+
+utilisation:<ul>
+<li><a href="app.html#nav">navigation entres les interfaces<a></li>
+<li><a href="app.html#tecop">le tecop<a></li>
+<li><a href="">l'editeur de texte<a></li>
+<li><a href="">l'editeur hexadécimal<a></li>
+<li><a href="">l'editeur de glyphe<a></li>
+<li><a href="">le partitionneur<a></li>
+</ul>
+
+
+créer une application:<ul>
+<li><a href="app.html#asm">en assembleur<a></li>
+<li><a href="app.html#c">en C<a></li>
+</ul>
+
+
+
+
 </div>
 
 
