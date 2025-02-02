@@ -1,27 +1,110 @@
 ﻿<!DOCTYPE html><html><head>
 <meta charset="UTF-8">
-<title>En Construction...</title>
-<link href="index.css" rel="stylesheet" type="text/css">
+<title>SEAC: systeme d'exploitation "aproximativement complet"</title>
+<link href="seac.css" rel="stylesheet" type="text/css">
 <meta name="robots" content="index,follow">
 <meta name="revisit-after" content="14">
-<script src="index.js" type="text/javascript"></script>
+<script src="seac.js" type="text/javascript"></script>
+<script src="webring_devse.js" type="text/javascript"></script>
 </head>
+<body onload="initpage()" onresize="initpage()">
+<center>
 
-<body onload="initpage()">
 
-<div class="tete">
-<a href="/" title="retour a la page principale"><img src="base.png"></a>
-<a href="/" title="flux RSS"><img src="rss.png"></a>
-<form class="recherche" action="/" method="get"><input size="16" name="rech"/><input type="submit" value="rechercher"/></form>
+
+<div class="bloc">
+<h1 title="en vrai ça veut dire Système d'Exploitation à Chier">SEaC</h1>
+
+<p>
+<img src="logo.svg" title="graphique design is my passion" align="left" style="margin:10px;">
+<span title="en vrai ça veut dire Système d'Exploitation à Chier">Seac (Système d'Exploitation Approximativement Complet)</span> est un projet personnel de systeme d'exploitation qui est le pretexte a l'etude de différent domaine de programmation, de la réalisation de drivers au décodages de formats de fichier en passant par l'étude des protocoles réseau et la réalisation de ce site pourris.
+<br/><br/>
+C'est un système d'exploitation monolithique en 32bit. il n'y as pas de GUI, chaque application qui as besoin d'interfacer avec l'utilisateur utilise la totalité de l'écran. 
+Le logiciel est écrit exclusivement en assembleur pour processeur x386 et compilable par le logiciel <a href="http://flatassembler.net">FASM 1.73.08</a> Cette documentation a été rédigé pour définir proprement les caractéristique du système et dans l'éventualité peu probable que quelqu'un d'autre souhaite utiliser ou modifier ce logiciel. l'intégralité du code source est en "<a href="#osef">osef source</a>" </br>
+<br/><br/>
+la version actuellement en cours de développement est la 0.23<br>
+</p>
+
 </div>
 
-<div id="corp" class="corp">Bienvenue dans cet horrible site oueb ou je vais écrire sur des sujets qui m'intéresse (et je l'espère vous aussi)<br/>
-Sur Github, je suis <a href="https://github.com/N-LG">N-LG</a> mais j'ai plein d'autres pseudo...<br/>
-pour l'instant pas grand chose parce que je suis en plein réapprentissage du javascript<br/><br/>
-<hr/>
-<p id="listePage"></p>
+
+
+<div class="bloc">
+<a href="#captures"><div class="pitibloc"><img src="captures.svg"><br/>Screenshots</div></a>
+<a href="#tel"><div class="pitibloc"><img src="téléchargement.svg"><br/>Téléchargements</div></a>
+<a href="https://github.com/N-LG/SEAC/wiki"><div class="pitibloc"><img src="doc.svg"><br/>Documentations</div></a>
+<a href="https://github.com/N-LG/SEAC"><div class="pitibloc"><img src="sources.svg"><br/>Sources</div></a>
+<div id="webring">SEaC</div>
 </div>
 
-</body></html>
+
+
+<div class="bloc">
+<a id="captures"></a>
+<img id="affichage" src="demo1.png">
+<div id="legende" style="font-size: 20pt;">le "Tecop"</div>
+<hr>
+<img class="petit" src="demo1.png" title='le "Tecop"'>
+<img class="petit" src="demo2.png" title="explorateur de fichier">
+<img class="petit" src="demo3.png" title="éditeur texte">
+<img class="petit" src="demo4.png" title="partitionneur de disque">
+<img class="petit" src="demo5.png" title="éditeur hexadécimal">
+<img class="petit" src="demo6.png" title="bureau">
+<img class="petit" src="demo7.png" title="éditeur de caractères">
+
+</div>
+
+
+
+<div class="bloc">
+<a id="tel"></a>
+<h3>dernière version:</h3>
+image disque dur et cdrom:<a href="https://github.com/N-LG/SEAC/raw/master/BIN/SEAC.ISO">seac.iso</a><br/>
+image disquette:<a href="https://github.com/N-LG/SEAC/raw/master/BIN/SEAC.IMG">seac.img</a><br/>
+image multiboot:<a href="https://github.com/N-LG/SEAC/raw/master/BIN/SEAC.IMB">seac.imb</a><br/>
+
+
+<h3>anciennes release:</h3>
+<a href="https://github.com/N-LG/SEAC/releases/tag/05-2024">2024.1</a><br/>
+<a href="https://github.com/N-LG/SEAC/releases/tag/05-2023">2023.3</a><br/>
+<a href="https://github.com/N-LG/SEAC/releases/tag/22.2">2023.2</a><br/>
+<a href="https://github.com/N-LG/SEAC/releases/tag/devellopement">2023.1</a><br/>
+</div>
+
+
+
+
+<div class="bloc">
+<a id="doc"></a>
+<h2>documentation du projet</h2>
+
+<h3>compilations</h3>
+<p>en cours d'ecriture...</p>
+
+<h3>installation</h3>
+<p>en cours d'ecriture...</p>
+
+<h3>dévellopement d'applications</h3>
+<a href="app.html#asm">créer une application en assembleur</a><br/>
+<a href="app.html#c">créer une application en C</a><br/>
+<a href="syscall.html">fonctions système</a><br/>
+
+<h3>annexes</h3>
+
+
+<h4><a id="termsp"></a>Termes "spéciaux"</h4>
+<p>
+UTF8Z -> chaine de caractère codé en UTF8 dont la fin est signalé par le caractère NULL (octet a zéro)<br/>
+TECOP -> <a href="#term">terminal de commande principal</a></br/>
+<a id="osef"></a>osef source -> (osef = On S'En Fout) c'est open source et vous pouvez en faire tout ce que vous voulez avec (même l’intégrer a un projet fermé et payant) il n'y as aucunes garanties concernant son bon fonctionnement par contre l'osef source ne vous empêchera pas d'être un trou-du-cul si vous utilisez ce code pour nuire a autrui ou si vous prétendez en être l'auteur<br/>
+</p>
+
+</div>
+
+
+
+
+
+</center></body></html>
 
 
